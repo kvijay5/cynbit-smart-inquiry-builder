@@ -31,11 +31,16 @@ export function Step3BudgetTimeline({
 
       {/* Budget Selection Section */}
       <div className="space-y-3">
-        <div className="flex items-center gap-2">
-          <DollarSign className="h-4 w-4 text-blue-600" />
-          <h3 className="text-sm font-bold text-slate-900">
-            Estimated Budget Range <span className="text-red-500">*</span>
-          </h3>
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+          <div className="flex items-center gap-2">
+            <DollarSign className="h-4 w-4 text-blue-600" />
+            <h3 className="text-sm font-bold text-slate-900">
+              Estimated Budget Range <span className="text-red-500">*</span>
+            </h3>
+          </div>
+          <span className="text-[11px] text-slate-500 italic">
+            Indicative scoping estimates only; not official fixed prices.
+          </span>
         </div>
 
         {errors.budgetRange && (

@@ -34,8 +34,13 @@ Traditional website contact forms are passive, unstructured, and often result in
 
 ### The Solution
 The **Smart Project Inquiry Builder** transforms the intake process into an intuitive, guided 6-step interactive journey:
-* **Grounded in Cynbit's Core Offerings**: Aligned with Cynbit's published capabilities in AI Automation, Custom Software, Cloud/DevOps, Digital Marketing/SEO, and UI/UX Design.
-* **Dual-Currency Awareness**: Explicit USD brackets with clear INR equivalents tailored to Cynbit's headquarters in Jaipur, India and its global client base.
+* **Grounded in Cynbit's Verified Offerings**: Directly aligned with Cynbit's 4 core published client service pillars (`cynbit.in`):
+  1. *AI Automation & Autonomous Agents* (Verified offering)
+  2. *Custom Software & Full-Stack Development* (Verified offering)
+  3. *Cloud Solutions & IT Architecture* (Verified offering)
+  4. *Digital Marketing, SEO & CRM Automation* (Verified offering)
+  5. *UI/UX Design & Product Strategy* (Proposed prototype addition for discovery and design handoff)
+* **Indicative Dual-Currency Awareness**: Explicit USD brackets with clear INR equivalents tailored to Cynbit's headquarters in Jaipur, India and its global client base (clearly labeled as indicative scoping estimates, not official public rate cards).
 * **Server-Enforced Data Quality**: Shared Zod schemas validate and sanitize all fields on both client and server.
 * **Zero-Trust Security**: Row Level Security (RLS) denies public reads, the privileged service role key never touches browser bundles, and a streaming byte counter protects against DoS memory exhaustion.
 * **Hardware-Locked Idempotency**: Atomic PostgreSQL unique constraints eliminate race-condition duplicates while gracefully replaying references for retried submissions.
@@ -51,7 +56,7 @@ The **Smart Project Inquiry Builder** transforms the intake process into an intu
 ```
 
 1. **Step 1: Service Category & Capabilities**
-   * The user selects a primary service category.
+   * The user selects a primary service category (4 verified Cynbit service lines + 1 proposed prototype addition).
    * Dynamically reveals relevant sub-service checkboxes with clear descriptions.
    * Requires at least one sub-service.
 2. **Step 2: Project Scope & Overview**
@@ -59,7 +64,7 @@ The **Smart Project Inquiry Builder** transforms the intake process into an intu
    * Live character counter enforcing bounds (20 to 2,000 characters).
    * Contextual guidance callout prompts users on key information to include.
 3. **Step 3: Budget Range & Target Timeline**
-   * Selectable budget cards displaying explicit USD amounts alongside approximate INR equivalents:
+   * Selectable budget cards displaying indicative scoping estimates (not official fixed prices) with explicit USD and INR amounts:
      * `< $5,000 USD (~₹4 Lakhs INR)`
      * `$5,000 - $15,000 USD (~₹4L - ₹12L INR)`
      * `$15,000 - $30,000 USD (~₹12L - ₹25L INR)`
@@ -374,6 +379,7 @@ Execute all 62 unit and API tests:
 ```bash
 npm test
 ```
+*Note: All 62 automated tests are isolated unit and route handler tests using mocked Supabase responses (`vi.mock('@/lib/supabase/server')`). They verify validation logic, stream limits, honeypot traps, and error branches without requiring a live database connection or network dependencies.*
 
 To run tests in interactive watch mode during development:
 ```bash

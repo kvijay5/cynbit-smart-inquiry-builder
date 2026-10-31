@@ -2,11 +2,15 @@
  * Cynbit Technologies Service Catalogue
  *
  * Grounded in Cynbit's actual website (cynbit.in):
- * 1. AI Automation & Autonomous Agents
- * 2. Custom Software & Full-Stack Development
- * 3. Cloud Solutions & IT Architecture
- * 4. Digital Marketing, SEO & CRM Automation
- * 5. UI/UX Design & Product Strategy
+ *
+ * Core Existing Commercial Offerings:
+ * 1. AI Automation & Autonomous Agents (LLMs, Agent Workflows, Process Automation)
+ * 2. Custom Software & Full-Stack Development (Next.js Web, Mobile Apps, SaaS Platforms)
+ * 3. Cloud Solutions & IT Architecture (AWS/GCP/Azure, DevOps, System Modernization)
+ * 4. Digital Marketing, SEO & CRM Automation (Technical SEO, Paid Media, Lead Engines)
+ *
+ * Proposed Prototype Addition:
+ * 5. UI/UX Design & Product Strategy (Design systems & prototyping proposed for this assessment)
  */
 
 export interface SubServiceOption {
@@ -20,6 +24,7 @@ export interface ServiceCategoryOption {
   name: string;
   shortDescription: string;
   iconName: string;
+  offeringType: "verified_existing" | "proposed_addition";
   subServices: SubServiceOption[];
 }
 
@@ -30,6 +35,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryOption[] = [
     shortDescription:
       "Custom LLM integrations, autonomous agent workflows, and intelligent business process automation.",
     iconName: "Bot",
+    offeringType: "verified_existing",
     subServices: [
       {
         id: "custom-llm",
@@ -59,6 +65,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryOption[] = [
     shortDescription:
       "Enterprise web applications, high-performance mobile apps, and scalable SaaS infrastructure.",
     iconName: "Code2",
+    offeringType: "verified_existing",
     subServices: [
       {
         id: "web-platforms",
@@ -88,6 +95,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryOption[] = [
     shortDescription:
       "Resilient cloud-native infrastructure, automated CI/CD pipelines, and secure cloud migration.",
     iconName: "Cloud",
+    offeringType: "verified_existing",
     subServices: [
       {
         id: "cloud-infrastructure",
@@ -117,6 +125,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryOption[] = [
     shortDescription:
       "Technical SEO, performance ads, conversion funnel optimization, and CRM automation engines.",
     iconName: "TrendingUp",
+    offeringType: "verified_existing",
     subServices: [
       {
         id: "technical-seo",
@@ -144,8 +153,9 @@ export const SERVICE_CATEGORIES: ServiceCategoryOption[] = [
     id: "ui-ux-design",
     name: "UI/UX Design & Product Strategy",
     shortDescription:
-      "User-centric product discovery, modern design systems, and interactive clickable prototypes.",
+      "User-centric product discovery, modern design systems, and interactive clickable prototypes (Assessment Proposal).",
     iconName: "Palette",
+    offeringType: "proposed_addition",
     subServices: [
       {
         id: "user-research",
@@ -177,6 +187,9 @@ export const SERVICE_CATEGORIES: ServiceCategoryOption[] = [
  * Cynbit is based in Jaipur, India and serves both domestic Indian enterprises and
  * international clients. To prevent regional assumptions, currency is explicitly
  * configurable here, and budget brackets display dual USD/INR references.
+ *
+ * NOTE: All budget tiers are indicative scoping estimates for this inquiry
+ * builder prototype, NOT official fixed prices or public rate cards of Cynbit.
  */
 export type SupportedCurrency = "USD" | "INR";
 
@@ -198,28 +211,28 @@ export const BUDGET_RANGES = [
     label: "< $5,000 USD",
     inrEquivalent: "< ₹4,00,000 INR",
     displayLabel: "< $5,000 USD (~₹4 Lakhs INR)",
-    description: "Ideal for small MVPs, discovery audits, or standalone modules",
+    description: "Indicative scoping estimate: Ideal for small MVPs, discovery audits, or standalone modules",
   },
   {
     id: "5k-15k",
     label: "$5,000 - $15,000 USD",
     inrEquivalent: "₹4,00,000 - ₹12,00,000 INR",
     displayLabel: "$5,000 - $15,000 USD (~₹4L - ₹12L INR)",
-    description: "Standard for targeted development, redesigns, or marketing funnels",
+    description: "Indicative scoping estimate: Targeted product modules, redesigns, or marketing funnels",
   },
   {
     id: "15k-30k",
     label: "$15,000 - $30,000 USD",
     inrEquivalent: "₹12,00,000 - ₹25,00,000 INR",
     displayLabel: "$15,000 - $30,000 USD (~₹12L - ₹25L INR)",
-    description: "Full-scale custom SaaS platform, deep AI agents, or enterprise apps",
+    description: "Indicative scoping estimate: Full custom SaaS platform, deep AI agents, or enterprise apps",
   },
   {
     id: "30k-plus",
     label: "$30,000+ USD",
     inrEquivalent: "₹25,00,000+ INR",
     displayLabel: "$30,000+ USD (~₹25 Lakhs+ INR)",
-    description: "Multi-platform enterprise systems or complex digital transformation",
+    description: "Indicative scoping estimate: Multi-platform enterprise systems or complex digital transformation",
   },
 ] as const;
 

@@ -34,8 +34,8 @@ Furthermore, traditional contact forms face severe technical challenges:
 ### The Engineering Solution
 The Smart Project Inquiry Builder solves these challenges through:
 1. **A Guided 6-Step Intake Flow**: Progresses through Services, Scope, Budget/Timeline, Contact, Review/Edit, and Confirmation.
-2. **Grounded Service Catalogue**: Structured around Cynbit's published capabilities in Jaipur and globally.
-3. **Dual-Currency Awareness**: Explicit USD and approximate INR budget brackets, eliminating geographic ambiguity.
+2. **Grounded Service Catalogue**: Aligned with Cynbit's 4 verified published client service lines (AI Automation, Custom Software, Cloud Solutions, and Digital Marketing/SEO), plus 1 proposed prototype addition (UI/UX Design & Product Strategy) introduced to represent design handoff.
+3. **Indicative Dual-Currency Awareness**: Explicit USD and approximate INR budget brackets, clearly labeled as indicative scoping estimates rather than official Cynbit fixed rate cards.
 4. **Idempotency by Design**: Generates a UUIDv4 idempotency key on the client and hardware-locks it via an atomic PostgreSQL unique constraint.
 5. **Zero-Public-Access Database**: Enforces PostgreSQL Row Level Security (RLS) with zero public read policies, executing all database operations through a server-only Supabase client.
 
@@ -106,7 +106,7 @@ ALTER TABLE inquiries ENABLE ROW LEVEL SECURITY;
 ## 5. Testing Methodology & Verification Results
 
 ### Test Suite Structure (Vitest)
-All 62 tests run and pass without a live database connection by using mocked Supabase responses where appropriate:
+All 62 tests run and pass without a live database connection by using mocked Supabase responses (`vi.mock('@/lib/supabase/server')`). They are strictly unit and Route Handler integration tests; no live database connection is made during test execution to ensure fast, isolated, and deterministic testing:
 
 | Test File | Tests | Focus Area |
 | :--- | :--- | :--- |

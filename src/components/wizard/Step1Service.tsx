@@ -65,7 +65,14 @@ export function Step1Service({
             >
               <div className="flex items-center justify-between w-full mb-3">
                 <div className="p-2 rounded-lg bg-slate-100">{CATEGORY_ICONS[cat.id] || <Bot className="h-6 w-6" />}</div>
-                {isSelected && <CheckCircle2 className="h-5 w-5 text-blue-600" />}
+                <div className="flex items-center gap-1.5">
+                  {cat.offeringType === "proposed_addition" && (
+                    <span className="rounded bg-purple-50 px-1.5 py-0.5 text-[10px] font-semibold text-purple-700 border border-purple-200">
+                      Proposed
+                    </span>
+                  )}
+                  {isSelected && <CheckCircle2 className="h-5 w-5 text-blue-600" />}
+                </div>
               </div>
               <h3 className="font-semibold text-slate-900 text-sm">{cat.name}</h3>
               <p className="mt-1 text-xs text-slate-500 leading-relaxed">{cat.shortDescription}</p>
