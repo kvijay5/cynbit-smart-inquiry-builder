@@ -65,7 +65,7 @@ export function Step6Confirmation({ result, onReset }: Step6ConfirmationProps) {
         </div>
         <div className="flex items-center justify-center gap-2 text-xs text-blue-800/80 pt-1">
           <span className="inline-block h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>Status: <strong className="capitalize">{result.status}</strong> &bull; Recorded in Database</span>
+          <span>Inquiry Status: <strong className="capitalize">{result.status}</strong> &bull; Verified Submission</span>
         </div>
       </div>
 
@@ -101,7 +101,7 @@ export function Step6Confirmation({ result, onReset }: Step6ConfirmationProps) {
 
       <div className="flex items-center justify-center gap-1.5 text-xs text-slate-400">
         <ShieldCheck className="h-3.5 w-3.5 text-slate-400" />
-        <span>Secured via PostgreSQL Row Level Security (RLS)</span>
+        <span>Protected by Server-Side Validation &amp; Idempotency Controls</span>
       </div>
     </div>
   );

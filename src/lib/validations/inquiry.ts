@@ -133,8 +133,9 @@ export const step4Schema = z.object({
       message: "You must consent to being contacted regarding this project inquiry.",
     }),
   }),
-  // Honeypot field: invisible to real users in the UI, used to catch automated bots
+  // Honeypot fields: invisible to real users in the UI, used to catch automated bots
   honeypot: z.string().optional(),
+  inquiry_bot_trap: z.string().optional(),
 });
 
 /**
@@ -211,8 +212,15 @@ export const inquirySubmissionSchema = z
         message: "You must consent to being contacted regarding this inquiry.",
       }),
     }),
-    // Honeypot field: MUST be empty or undefined. If filled, request is rejected!
+    // Honeypot fields: MUST be empty or undefined. If filled, request is rejected!
     honeypot: z
+      .string()
+      .optional()
+      .refine(
+        (val) => !val || val.trim().length === 0,
+        "Spam detected: Honeypot field must remain empty."
+      ),
+    inquiry_bot_trap: z
       .string()
       .optional()
       .refine(

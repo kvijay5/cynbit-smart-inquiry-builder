@@ -42,7 +42,7 @@ export function Step3BudgetTimeline({
           <p className="text-xs text-red-600 font-medium">{errors.budgetRange}</p>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div role="radiogroup" aria-label="Estimated Budget Range" className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {BUDGET_RANGES.map((b) => {
             const isSelected = budgetRange === b.id;
 
@@ -50,8 +50,10 @@ export function Step3BudgetTimeline({
               <button
                 key={b.id}
                 type="button"
+                role="radio"
+                aria-checked={isSelected}
                 onClick={() => onSelectBudget(b.id)}
-                className={`p-4 rounded-xl border text-left transition-all ${
+                className={`p-4 rounded-xl border text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                   isSelected
                     ? "border-blue-600 bg-blue-50/50 shadow-sm ring-2 ring-blue-500/20"
                     : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50"
@@ -83,7 +85,7 @@ export function Step3BudgetTimeline({
           <p className="text-xs text-red-600 font-medium">{errors.timeline}</p>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div role="radiogroup" aria-label="Target Delivery Timeline" className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {TIMELINES.map((t) => {
             const isSelected = timeline === t.id;
 
@@ -91,8 +93,10 @@ export function Step3BudgetTimeline({
               <button
                 key={t.id}
                 type="button"
+                role="radio"
+                aria-checked={isSelected}
                 onClick={() => onSelectTimeline(t.id)}
-                className={`p-4 rounded-xl border text-left transition-all ${
+                className={`p-4 rounded-xl border text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                   isSelected
                     ? "border-blue-600 bg-blue-50/50 shadow-sm ring-2 ring-blue-500/20"
                     : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50"

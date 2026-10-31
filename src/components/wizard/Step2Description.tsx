@@ -36,7 +36,7 @@ export function Step2Description({
       )}
 
       {/* Helpful Guidance Callout */}
-      <div className="rounded-xl border border-blue-100 bg-blue-50/60 p-4 text-xs text-blue-900 space-y-1.5">
+      <div id="desc-help" className="rounded-xl border border-blue-100 bg-blue-50/60 p-4 text-xs text-blue-900 space-y-1.5">
         <div className="flex items-center gap-2 font-semibold text-blue-950">
           <HelpCircle className="h-4 w-4 text-blue-600" />
           <span>Tips for a helpful inquiry brief:</span>
@@ -58,6 +58,9 @@ export function Step2Description({
           rows={6}
           value={projectDescription}
           onChange={(e) => onChange(e.target.value)}
+          aria-invalid={Boolean(error)}
+          aria-describedby="desc-counter desc-help"
+          aria-required="true"
           placeholder="E.g., We are developing a multi-tenant B2B SaaS platform that requires autonomous AI agents to automate customer review sentiment analysis and sync data with our CRM..."
           className={`w-full rounded-xl border p-3.5 text-sm transition-colors focus:outline-none focus:ring-2 ${
             error
@@ -65,7 +68,7 @@ export function Step2Description({
               : "border-slate-300 bg-white focus:border-blue-500 focus:ring-blue-100"
           }`}
         />
-        <div className="mt-2 flex items-center justify-between text-xs">
+        <div id="desc-counter" className="mt-2 flex items-center justify-between text-xs">
           <span
             className={
               isTooShort

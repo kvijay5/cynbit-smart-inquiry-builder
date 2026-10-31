@@ -46,7 +46,7 @@ export function Step1Service({
       )}
 
       {/* Category Selection Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div role="radiogroup" aria-label="Service Categories" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {SERVICE_CATEGORIES.map((cat: ServiceCategoryOption) => {
           const isSelected = selectedCategory === cat.id;
 
@@ -54,8 +54,10 @@ export function Step1Service({
             <button
               key={cat.id}
               type="button"
+              role="radio"
+              aria-checked={isSelected}
               onClick={() => onSelectCategory(cat.id)}
-              className={`flex flex-col text-left p-4 rounded-xl border transition-all duration-150 ${
+              className={`flex flex-col text-left p-4 rounded-xl border transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 ${
                 isSelected
                   ? "border-blue-600 bg-blue-50/50 shadow-sm ring-2 ring-blue-500/20"
                   : "border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50"

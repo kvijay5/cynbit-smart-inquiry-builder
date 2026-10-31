@@ -127,6 +127,26 @@ describe("POST /api/inquiries (Mocked Route Handler Tests)", () => {
     expect(body.error.code).toBe("INVALID_REQUEST");
   });
 
+  it("quietly rejects requests when inquiry_bot_trap alias is filled by HTML-scraping bots", async () => {
+    const spamPayload = {
+      ...validPayload,
+      inquiry_bot_trap: "automated-form-filler-value",
+    };
+
+    const request = new NextRequest("http://localhost:3000/api/inquiries", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(spamPayload),
+    });
+
+    const response = await POST(request);
+    const body = await response.json();
+
+    expect(response.status).toBe(400);
+    expect(body.success).toBe(false);
+    expect(body.error.code).toBe("INVALID_REQUEST");
+  });
+
   it("returns 400 with validation details when required fields fail Zod validation", async () => {
     const invalidPayload = {
       ...validPayload,

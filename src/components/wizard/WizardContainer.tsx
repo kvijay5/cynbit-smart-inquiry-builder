@@ -204,6 +204,9 @@ export function WizardContainer() {
 
   // Final Submission to POST /api/inquiries
   const handleSubmit = async () => {
+    // Guard against duplicate concurrent clicks
+    if (isSubmitting) return;
+
     setIsSubmitting(true);
     setSubmissionError(null);
 
@@ -221,6 +224,7 @@ export function WizardContainer() {
         company: formData.company || undefined,
         consent: formData.consent,
         honeypot: formData.honeypot || undefined,
+        inquiry_bot_trap: formData.honeypot || undefined,
       };
 
       const response = await fetch("/api/inquiries", {

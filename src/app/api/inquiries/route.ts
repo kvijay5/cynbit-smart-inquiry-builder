@@ -137,11 +137,12 @@ export async function POST(request: NextRequest): Promise<NextResponse<ApiRespon
     }
 
     // 4. Honeypot Bot Detection
-    if (
-      parsedBody.honeypot &&
-      typeof parsedBody.honeypot === "string" &&
-      parsedBody.honeypot.trim().length > 0
-    ) {
+    // Checks both field aliases ('honeypot' and 'inquiry_bot_trap').
+    const honeypotContent =
+      (typeof parsedBody.honeypot === "string" ? parsedBody.honeypot : "") ||
+      (typeof parsedBody.inquiry_bot_trap === "string" ? parsedBody.inquiry_bot_trap : "");
+
+    if (honeypotContent.trim().length > 0) {
       return NextResponse.json(
         {
           success: false,
