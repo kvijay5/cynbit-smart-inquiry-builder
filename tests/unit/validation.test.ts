@@ -18,6 +18,15 @@ describe("Inquiry Zod Validation Schemas", () => {
       expect(result.success).toBe(true);
     });
 
+    it("accepts digital marketing, SEO and CRM automation offerings", () => {
+      const valid = {
+        serviceCategory: "digital-marketing-seo",
+        subServices: ["technical-seo", "crm-automation", "funnel-optimization"],
+      };
+      const result = step1Schema.safeParse(valid);
+      expect(result.success).toBe(true);
+    });
+
     it("rejects an invalid service category", () => {
       const invalid = {
         serviceCategory: "crypto-mining",
@@ -93,6 +102,14 @@ describe("Inquiry Zod Validation Schemas", () => {
       };
       const result = step3Schema.safeParse(valid);
       expect(result.success).toBe(true);
+    });
+
+    it("accepts all configured budget ranges without currency ambiguity", () => {
+      const ranges = ["under-5k", "5k-15k", "15k-30k", "30k-plus"];
+      for (const budgetRange of ranges) {
+        const result = step3Schema.safeParse({ budgetRange, timeline: "urgent" });
+        expect(result.success).toBe(true);
+      }
     });
 
     it("rejects an invalid budget range", () => {

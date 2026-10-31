@@ -1,11 +1,12 @@
 /**
  * Cynbit Technologies Service Catalogue
  *
- * Grounded in Cynbit's core offerings:
+ * Grounded in Cynbit's actual website (cynbit.in):
  * 1. AI Automation & Autonomous Agents
  * 2. Custom Software & Full-Stack Development
  * 3. Cloud Solutions & IT Architecture
- * 4. UI/UX Design & Product Strategy
+ * 4. Digital Marketing, SEO & CRM Automation
+ * 5. UI/UX Design & Product Strategy
  */
 
 export interface SubServiceOption {
@@ -48,7 +49,7 @@ export const SERVICE_CATEGORIES: ServiceCategoryOption[] = [
       {
         id: "sentiment-analytics",
         label: "Data & Sentiment Analytics",
-        description: "AI-powered review analysis, sentiment categorization, and real-time insights.",
+        description: "AI-powered review analysis, sentiment categorization, and real-time operational insights.",
       },
     ],
   },
@@ -111,6 +112,35 @@ export const SERVICE_CATEGORIES: ServiceCategoryOption[] = [
     ],
   },
   {
+    id: "digital-marketing-seo",
+    name: "Digital Marketing, SEO & CRM Automation",
+    shortDescription:
+      "Technical SEO, performance ads, conversion funnel optimization, and CRM automation engines.",
+    iconName: "TrendingUp",
+    subServices: [
+      {
+        id: "technical-seo",
+        label: "Technical SEO & Search Dominance",
+        description: "Infrastructure optimization, Core Web Vitals tuning, and organic visibility strategies.",
+      },
+      {
+        id: "crm-automation",
+        label: "CRM Automation & Lead Nurturing",
+        description: "Automated pipeline workflows to convert incoming leads into active customers.",
+      },
+      {
+        id: "performance-ads",
+        label: "Performance Ads (Google & Meta)",
+        description: "High-ROI paid media campaigns engineered for measurable qualified conversions.",
+      },
+      {
+        id: "funnel-optimization",
+        label: "Conversion Funnel Optimization",
+        description: "Data-driven landing pages and UX testing to maximize inquiry-to-client conversion rates.",
+      },
+    ],
+  },
+  {
     id: "ui-ux-design",
     name: "UI/UX Design & Product Strategy",
     shortDescription:
@@ -141,11 +171,56 @@ export const SERVICE_CATEGORIES: ServiceCategoryOption[] = [
   },
 ];
 
+/**
+ * Currency Configuration
+ *
+ * Cynbit is based in Jaipur, India and serves both domestic Indian enterprises and
+ * international clients. To prevent regional assumptions, currency is explicitly
+ * configurable here, and budget brackets display dual USD/INR references.
+ */
+export type SupportedCurrency = "USD" | "INR";
+
+export interface CurrencyConfig {
+  code: SupportedCurrency;
+  symbol: string;
+  name: string;
+}
+
+export const ACTIVE_CURRENCY: CurrencyConfig = {
+  code: "USD",
+  symbol: "$",
+  name: "US Dollar",
+};
+
 export const BUDGET_RANGES = [
-  { id: "under-5k", label: "< $5,000", description: "Ideal for small MVPs, discovery, or quick audits" },
-  { id: "5k-15k", label: "$5,000 - $15,000", description: "Standard for standalone modules, prototypes, or redesigns" },
-  { id: "15k-30k", label: "$15,000 - $30,000", description: "Full-scale custom platform or deep AI integration" },
-  { id: "30k-plus", label: "$30,000+", description: "Enterprise-grade digital transformation or multi-platform systems" },
+  {
+    id: "under-5k",
+    label: "< $5,000 USD",
+    inrEquivalent: "< ₹4,00,000 INR",
+    displayLabel: "< $5,000 USD (~₹4 Lakhs INR)",
+    description: "Ideal for small MVPs, discovery audits, or standalone modules",
+  },
+  {
+    id: "5k-15k",
+    label: "$5,000 - $15,000 USD",
+    inrEquivalent: "₹4,00,000 - ₹12,00,000 INR",
+    displayLabel: "$5,000 - $15,000 USD (~₹4L - ₹12L INR)",
+    description: "Standard for targeted development, redesigns, or marketing funnels",
+  },
+  {
+    id: "15k-30k",
+    label: "$15,000 - $30,000 USD",
+    inrEquivalent: "₹12,00,000 - ₹25,00,000 INR",
+    displayLabel: "$15,000 - $30,000 USD (~₹12L - ₹25L INR)",
+    description: "Full-scale custom SaaS platform, deep AI agents, or enterprise apps",
+  },
+  {
+    id: "30k-plus",
+    label: "$30,000+ USD",
+    inrEquivalent: "₹25,00,000+ INR",
+    displayLabel: "$30,000+ USD (~₹25 Lakhs+ INR)",
+    description: "Multi-platform enterprise systems or complex digital transformation",
+  },
 ] as const;
 
 export const TIMELINES = [
