@@ -21,7 +21,6 @@ describe("Server-Side Supabase Client Utilities", () => {
 
   it("reports isSupabaseConfigured() as false when variables are absent", () => {
     delete process.env.SUPABASE_URL;
-    delete process.env.NEXT_PUBLIC_SUPABASE_URL;
     delete process.env.SUPABASE_SERVICE_ROLE_KEY;
 
     expect(isSupabaseConfigured()).toBe(false);
@@ -36,7 +35,6 @@ describe("Server-Side Supabase Client Utilities", () => {
 
   it("throws a descriptive error when SUPABASE_URL is missing", () => {
     delete process.env.SUPABASE_URL;
-    delete process.env.NEXT_PUBLIC_SUPABASE_URL;
     process.env.SUPABASE_SERVICE_ROLE_KEY = "dummy-service-role-key";
 
     expect(() => getSupabaseAdminClient()).toThrowError(/SUPABASE_URL/);
