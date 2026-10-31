@@ -1,17 +1,26 @@
+import React from "react";
+import { WizardContainer } from "@/components/wizard/WizardContainer";
+import { WizardHeader } from "@/components/wizard/WizardHeader";
+import { ShieldCheck } from "lucide-react";
+
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 text-center">
-      <div className="max-w-xl rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
-        <span className="inline-block rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700">
-          Cynbit Full Stack Assessment
-        </span>
-        <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900">
-          Smart Project Inquiry Builder
-        </h1>
-        <p className="mt-3 text-sm text-slate-600">
-          Next.js App Router, TypeScript, and Tailwind CSS initialized successfully.
-        </p>
-      </div>
-    </main>
+    <div className="min-h-screen bg-slate-50/60 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px] text-slate-900">
+      <main className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
+        <WizardHeader />
+        <WizardContainer />
+
+        {/* Evaluation & Security Footer */}
+        <footer className="mt-8 pt-6 border-t border-slate-200 text-center text-xs text-slate-500 space-y-2">
+          <div className="flex items-center justify-center gap-1.5 font-medium text-slate-600">
+            <ShieldCheck className="h-4 w-4 text-blue-600" />
+            <span>Cynbit Technologies &bull; Full Stack Internship Assessment Prototype</span>
+          </div>
+          <p>
+            Powered by Next.js 15 App Router, TypeScript, Tailwind CSS, and Supabase PostgreSQL with Row Level Security.
+          </p>
+        </footer>
+      </main>
+    </div>
   );
 }
