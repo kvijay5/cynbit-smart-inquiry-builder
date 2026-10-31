@@ -35,3 +35,7 @@ Thumbs.db
 # TypeScript cache
 *.tsbuildinfo
 next-env.d.ts
+
+# Local development instructions & assistant context
+GEMINI.md
+
